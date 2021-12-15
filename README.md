@@ -26,7 +26,7 @@ packing / test 등이 간편하다는 장점이 있지만,
 ├── sample_package
 │   ├── __init__.py
 │   └── engine.py           : 간단한 deep learning model 위치
-├── setup.py                : shared object(.so) file로 export
+├── setup.py                : python package setup (cythonize)
 ├── test.py                 : build한 package로 test 실행
 ├── requirements.txt        : pip requirements to setup (dependencies)
 └── README.md
