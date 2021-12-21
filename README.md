@@ -1,4 +1,4 @@
-# Cythnoize: Example for cythonizing python package
+# Cythonize: Example for cythonizing python package
 
 ## Introduction
 https://www.notion.so/enerzai/Python-C-e9020be9e3634401b18ae9da50fed376
