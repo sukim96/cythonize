@@ -1,8 +1,6 @@
-# Cythnoize: Example for cythonizing python package
+# Cythonize: Example for cythonizing python package
 
 ## Introduction
-https://www.notion.so/enerzai/Python-C-e9020be9e3634401b18ae9da50fed376
-
 Python은 script language로, interpreter를 이용해 실행한다.
 
 기존의 컴파일 언어에 비해 파이썬 패키지는 쉽게 구현할 수 있고,
@@ -36,3 +34,37 @@ packing / test 등이 간편하다는 장점이 있지만,
 - Cython
 - pytorch
 - torchvision
+
+## Build
+1. build_ext 로 빌드
+```
+$ python setup.py build_ext
+```
+2. bdist 로 빌드
+```
+$ python setup.py bdistwheel
+```
+
+## Run
+1. build_ext 로 빌드
+    - build/lib.linux-{architecture}-{python_version} directory 내부에 .so 파일, __init__.py 파일 생김
+    - 해당 디렉토리에서 .so파일 내부의 패키지 불러와서 사용 가능
+
+2. bdist 로 빌드
+    - dist 디렉토리에 패키지 생김
+    - 해당 패키지에 맞게 패키지 설치 후 실행
+    - ex) .whl: pip으로 설치
+        ```
+        $ pip install dist/*.whl
+        ```
+3. 설치 후 실행 (sample)
+    ```
+    $ python
+    >>> from sample_package import Engine
+    >>> import torch
+    >>> device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    >>> engine = Engine(num_classes=3, device=device)
+    >>> t = torch.randn((1, 3, 224, 224), device=device)
+    >>> o = engine(t)
+    >>> print(o)
+    ```
